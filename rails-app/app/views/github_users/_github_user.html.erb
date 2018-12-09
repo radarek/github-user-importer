@@ -1,0 +1,29 @@
+<div>
+  <h3>User: <%= github_user.login %></h3>
+
+  <% if github_user.imported? %>
+    <%= image_tag github_user.avatar_url, size: '64' %>
+
+    <h4>Repositories</h3>
+
+    <table>
+      <% github_user.repositories.each do |repository| %>
+        <tr>
+          <td>
+            <%= link_to repository.name, repository.url %>
+          </td>
+
+          <td>
+            <%= repository.stargazer %><span style='color: gold'>★</span>
+          </td>
+
+          <td>
+            created at <%= time_ago_in_words repository.created_at %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h4>Importing data...</h4>
+  <% end %>
+</div>

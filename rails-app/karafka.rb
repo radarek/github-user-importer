@@ -38,9 +38,13 @@ class KarafkaApp < Karafka::App
   Karafka.monitor.subscribe(Karafka::Instrumentation::Listener)
 
   consumer_groups.draw do
-    # topic :example do
-    #   consumer ExampleConsumer
-    # end
+    topic :repositories_imported do
+      consumer RepositoriesImportedConsumer
+    end
+
+    topic :avatar_imported do
+      consumer AvatarImportedConsumer
+    end
 
     # consumer_group :bigger_group do
     #   topic :test do

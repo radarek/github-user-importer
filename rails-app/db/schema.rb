@@ -15,7 +15,10 @@ ActiveRecord::Schema.define(version: 2018_12_07_131446) do
   create_table "github_users", force: :cascade do |t|
     t.string "login", null: false
     t.string "avatar_url"
-    t.string "status", null: false
+    t.boolean "avatar_imported", default: false, null: false
+    t.boolean "repositories_imported", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["login"], name: "index_github_users_on_login"
   end
 
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_131446) do
     t.integer "github_user_id"
     t.string "name", null: false
     t.string "url", null: false
-    t.integer "stargazers", default: 0, null: false
+    t.integer "stargazer", default: 0, null: false
     t.datetime "created_at", null: false
     t.index ["github_user_id"], name: "index_repositories_on_github_user_id"
   end

@@ -1,0 +1,8 @@
+<h2>Add new Github user</h2>
+
+<%= form_with model: GithubUser.new, local: true do |f| %>
+  <%= f.text_field :login %>
+  <%= f.submit :import %>
+<% end %>
+
+<%= render @github_users %>
