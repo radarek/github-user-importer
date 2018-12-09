@@ -9,14 +9,13 @@ class RepositoriesImporter < GitHubImporter
   private
 
   def repositories
-    Karafka.logger.info "Fecznąłem repa"
     @repositories ||= user.rels[:repos].get.data
   end
 
   def parse(repository)
     {
       name: repository.name,
-      url: repository.url,
+      url: repository.svn_url,
       stargazer: repository.stargazers_count,
       created_at: repository.created_at
     }
