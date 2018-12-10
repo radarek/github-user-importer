@@ -15,7 +15,7 @@ class RepositoriesImporter < GitHubImporter
   def parse(repository)
     {
       name: repository.name,
-      url: repository.svn_url,
+      url: repository.html_url,
       stargazer: repository.stargazers_count,
       created_at: repository.created_at
     }
